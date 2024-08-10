@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamepad36ster", "GamePad_36ster\GamePad_36ster\Gamepad36ster.csproj", "{E7339E61-758B-4071-9EE7-DDD4E964B63E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamePad 36ster", "GamePad_36ster\GamePad_36sterContent\GamePad 36ster.contentproj", "{AC155AE6-9E39-418A-B582-45DF547EFA77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|XDK = Debug|XDK
+		Profile|Any CPU = Profile|Any CPU
+		Profile|XDK = Profile|XDK
+		Release|Any CPU = Release|Any CPU
+		Release|XDK = Release|XDK
+		Submission|Any CPU = Submission|Any CPU
+		Submission|XDK = Submission|XDK
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Debug|Any CPU.ActiveCfg = Debug|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Debug|XDK.ActiveCfg = Debug|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Debug|XDK.Build.0 = Debug|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Debug|XDK.Deploy.0 = Debug|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Profile|Any CPU.ActiveCfg = Profile|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Profile|XDK.ActiveCfg = Profile|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Profile|XDK.Build.0 = Profile|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Profile|XDK.Deploy.0 = Profile|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Release|Any CPU.ActiveCfg = Release|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Release|XDK.ActiveCfg = Release|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Release|XDK.Build.0 = Release|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Release|XDK.Deploy.0 = Release|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Submission|Any CPU.ActiveCfg = Submission|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Submission|XDK.ActiveCfg = Submission|XDK
+		{E7339E61-758B-4071-9EE7-DDD4E964B63E}.Submission|XDK.Build.0 = Submission|XDK
+		{AC155AE6-9E39-418A-B582-45DF547EFA77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC155AE6-9E39-418A-B582-45DF547EFA77}.Debug|XDK.ActiveCfg = Debug|Any CPU
+		{AC155AE6-9E39-418A-B582-45DF547EFA77}.Profile|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC155AE6-9E39-418A-B582-45DF547EFA77}.Profile|XDK.ActiveCfg = Debug|Any CPU
+		{AC155AE6-9E39-418A-B582-45DF547EFA77}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC155AE6-9E39-418A-B582-45DF547EFA77}.Release|XDK.ActiveCfg = Debug|Any CPU
+		{AC155AE6-9E39-418A-B582-45DF547EFA77}.Submission|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC155AE6-9E39-418A-B582-45DF547EFA77}.Submission|XDK.ActiveCfg = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
