@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamepad36ster", "GamePad_36ster\GamePad_36ster\Gamepad36ster.csproj", "{E7339E61-758B-4071-9EE7-DDD4E964B63E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gamepad36ster", "GamePad_36ster\Gamepad36ster.csproj", "{E7339E61-758B-4071-9EE7-DDD4E964B63E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamePad 36ster", "GamePad_36ster\GamePad_36sterContent\GamePad 36ster.contentproj", "{AC155AE6-9E39-418A-B582-45DF547EFA77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GamePad 36ster", "GamePad_36sterContent\GamePad 36ster.contentproj", "{AC155AE6-9E39-418A-B582-45DF547EFA77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
