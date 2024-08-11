@@ -126,7 +126,7 @@ namespace GamepadTester
             }
             else
             {
-                string title = "GamePad Tester";
+                string title = "GamePad 36ster";
                 Vector2 titleSize = gameContent.TitleFont.MeasureString(title);
                 Vector2 titlePos = new Vector2(
                     (graphics.PreferredBackBufferWidth - titleSize.X) / 2,
