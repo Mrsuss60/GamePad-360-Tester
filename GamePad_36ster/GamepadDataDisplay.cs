@@ -33,7 +33,7 @@ namespace GamepadTester
             DrawButtonState(spriteBatch, "D_DOWN", currentState.DPad.Down, new Vector2(50, 130));
             DrawButtonState(spriteBatch, "D_LEFT", currentState.DPad.Left, new Vector2(50, 160));
             DrawButtonState(spriteBatch, "D_RIGHT", currentState.DPad.Right, new Vector2(50, 190));
-            DrawButtonState(spriteBatch, "LB", currentState.Buttons.RightShoulder, new Vector2(50, 220));
+            DrawButtonState(spriteBatch, "LB", currentState.Buttons.LeftShoulder, new Vector2(50, 220));
             DrawButtonState(spriteBatch, "BACK", currentState.Buttons.Back, new Vector2(50, 250));
             DrawButtonState(spriteBatch, "LS", currentState.Buttons.LeftStick, new Vector2(50, 280));
 
