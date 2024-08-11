@@ -123,6 +123,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backcolors.cs" />
     <Compile Include="GameContent.cs" />
     <Compile Include="GamepadDataDisplay.cs" />
     <Compile Include="GamepadRenderer.cs" />
