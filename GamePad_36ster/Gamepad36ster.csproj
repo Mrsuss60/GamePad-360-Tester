@@ -133,7 +133,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="GamepadTesterGame.cs" />
     <Compile Include="VibrationTester.cs" />
-	<Compile Include="GlowingGuidButton.cs" />
+	<Compile Include="GlowingGuideButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <ContentXlast Include="Content.xlast" />
