@@ -173,13 +173,6 @@
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="codeback.txt" />
-    <Content Include="GamepadRendere.txt" />
-    <Compile Include="GlowingGuideButton.cs" />
-    <Content Include="Gamerender2.0.txt" />
-    <Content Include="InputManager.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\XDK\Microsoft.Xna.GameStudio.Xdk.targets" />
   <!--
