@@ -28,6 +28,8 @@ namespace GamepadTester
         public Texture2D GuideButtonBrightTexture { get; private set; }
         public Texture2D GuideButtonMediumTexture { get; private set; }
         public Texture2D GuideButtonDarkTexture { get; private set; }
+        public Texture2D RStexture { get; private set; }
+        public Texture2D LStexture { get; private set; } 
         public SpriteFont Font { get; private set; }
         public SpriteFont TitleFont { get; private set; }
         public SpriteFont By { get; private set; }
@@ -50,6 +52,8 @@ namespace GamepadTester
             RbTexture = content.Load<Texture2D>("rb");
             LeftStickTexture = content.Load<Texture2D>("LeftStickTexture");
             RightStickTexture = content.Load<Texture2D>("RightStickTexture");
+            RStexture = content.Load<Texture2D>("RStexture");
+            LStexture = content.Load<Texture2D>("LStexture");
 
             LeftTriggerBarTexture = content.Load<Texture2D>("LeftT");
             LeftTriggerFillTexture = content.Load<Texture2D>("LeftTFill");
