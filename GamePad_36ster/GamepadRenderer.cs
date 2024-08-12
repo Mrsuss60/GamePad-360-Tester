@@ -19,7 +19,6 @@ namespace GamepadTester
         private Vector2 smoothedLeftStickOffset = Vector2.Zero;
         private Vector2 smoothedRightStickOffset = Vector2.Zero;
 
-
         private const float StickMovementScale = 30f;
 
         private const float LeftStickCenterX = 362f;
@@ -28,7 +27,6 @@ namespace GamepadTester
         private const float RightStickCenterY = 263f;
 
         private const float SmoothingFactor = 0.20f;
-
 
         public GamepadRenderer(int screenWidth, int screenHeight)
         {
@@ -85,7 +83,6 @@ namespace GamepadTester
             glowingGuideButton.Update(gameTime);
         }
 
-
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(gameContent.GamepadFrameTexture, gamepadPosition, Color.White);
@@ -104,7 +101,6 @@ namespace GamepadTester
             DrawVibrationIndicators(spriteBatch);
         }
 
-
         private void DrawSticks(SpriteBatch spriteBatch)
         {
             Vector2 leftStickCenter = new Vector2(gamepadPosition.X + LeftStickCenterX, gamepadPosition.Y + LeftStickCenterY);
@@ -112,8 +108,21 @@ namespace GamepadTester
 
             DrawStick(spriteBatch, gameContent.LeftStickTexture, leftStickCenter, smoothedLeftStickOffset);
             DrawStick(spriteBatch, gameContent.RightStickTexture, rightStickCenter, smoothedRightStickOffset);
-        }
 
+            if (currentState.Buttons.LeftStick == ButtonState.Pressed)
+            {
+                spriteBatch.Draw(gameContent.LStexture, leftStickCenter + smoothedLeftStickOffset, null, Color.White, 0f,
+                    new Vector2(gameContent.LStexture.Width / 2, gameContent.LStexture.Height / 2),
+                    Vector2.One, SpriteEffects.None, 0f);
+            }
+
+            if (currentState.Buttons.RightStick == ButtonState.Pressed)
+            {
+                spriteBatch.Draw(gameContent.RStexture, rightStickCenter + smoothedRightStickOffset, null, Color.White, 0f,
+                    new Vector2(gameContent.RStexture.Width / 2, gameContent.RStexture.Height / 2),
+                    Vector2.One, SpriteEffects.None, 0f);
+            }
+        }
 
         private void DrawStick(SpriteBatch spriteBatch, Texture2D texture, Vector2 center, Vector2 offset)
         {
@@ -126,7 +135,7 @@ namespace GamepadTester
         private void DrawGlowingGuideButton(SpriteBatch spriteBatch)
         {
             Vector2 gamepadCenter = new Vector2(
-                gamepadPosition.X + 0 / 2, 
+                gamepadPosition.X + 0 / 2,
                 gamepadPosition.Y + 35 / 2);
 
             Vector2 guideButtonOffset = new Vector2(0, -20);
