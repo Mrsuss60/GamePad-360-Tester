@@ -16,7 +16,7 @@ namespace GamepadTester
         private InputManager inputManager;
         private LTRT ltrt;
         private TimeSpan lbRbHoldTime = TimeSpan.Zero;
-        private const float MenuActivationTime = 1f; 
+        private const float MenuActivationTime = 1f;
 
         private VertexPositionColor[] gradientVertices;
         private BasicEffect gradientEffect;
@@ -65,6 +65,8 @@ namespace GamepadTester
             ltrt = new LTRT(gameContent, gamepadPos);
 
             backcolors = new Backcolors(gameContent.Font);
+
+            SaveLoad.LoadColors(backcolors);
         }
 
         protected override void Update(GameTime gameTime)
@@ -80,6 +82,11 @@ namespace GamepadTester
                 {
                     backcolors.ToggleActive();
                     lbRbHoldTime = TimeSpan.Zero;
+
+                    if (!backcolors.IsActive)
+                    {
+                        SaveLoad.SaveColors(backcolors);
+                    }
                 }
             }
             else
