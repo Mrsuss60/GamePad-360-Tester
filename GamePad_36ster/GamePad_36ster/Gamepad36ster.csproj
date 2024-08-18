@@ -133,6 +133,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="GamepadTesterGame.cs" />
     <Compile Include="VibrationTester.cs" />
+	<Compile Include="Saveload.cs" />
 	<Compile Include="GlowingGuideButton.cs" />
   </ItemGroup>
   <ItemGroup>
