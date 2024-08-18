@@ -109,7 +109,7 @@ public class Backcolors
                 string componentText = j == 0 ? string.Format(" Red:{0}", color.R) :
                                        (j == 1 ? string.Format(" Green:{0}", color.G) :
                                        string.Format(" Blue:{0}", color.B));
-                float additionalSpacing = j == 2 ? 20 : 0; 
+                float additionalSpacing = j == 1 ? -10 : 0; 
                 Vector2 componentPosition = position + new Vector2(font.MeasureString(colorNames[i] + ":").X, 0) + new Vector2(j * 100 + additionalSpacing, 0);
 
                 Color componentColor = (i == currentColorIndex && j == currentComponentIndex) ? Color.Yellow : Color.Black;
