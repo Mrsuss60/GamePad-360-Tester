@@ -2,7 +2,7 @@
 
 **Using XNA Framework 4.0**
 
-> **Latest system and dashboard updates are required!**
+> **Latest system and dashboard updates are required❗**
 
 ---
 
