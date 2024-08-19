@@ -13,6 +13,6 @@
 
 ---
 
-### 📦 Version: `testbuild1.3`
+### 📦 [Version: `testbuild1.3`](https://github.com/Mrsuss60/GamePad-360-Tester/releases/tag/v1.3)
 
 ![GamePad Tester Preview](https://github.com/user-attachments/assets/468d9796-9258-4df4-b363-02f5324120f9)
