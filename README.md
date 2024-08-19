@@ -1,11 +1,18 @@
-GamePad Tester for Xbox 360 using XNA Framework 4.0 
+# GamePad Tester for Xbox 360
 
-Latest system and dashboard updates are required!
+**Using XNA Framework 4.0**
 
-Background colors are Customizable, Access the Customizing Menu by holding the LB+RB for 1 second 
+> **Latest system and dashboard updates are required!**
 
-testbuild1.3 : 
+---
 
-![image](https://github.com/user-attachments/assets/468d9796-9258-4df4-b363-02f5324120f9)
+### 🎮
 
+- **Background colors are customizable!**  
+- Access the Customizing Menu by holding **LB + RB** for **1 second**.
 
+---
+
+### 📦 Version: `testbuild1.3`
+
+![GamePad Tester Preview](https://github.com/user-attachments/assets/468d9796-9258-4df4-b363-02f5324120f9)
