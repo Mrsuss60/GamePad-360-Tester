@@ -4,7 +4,6 @@
 
 > **Latest system and dashboard updates are required❗**
 ---
-### 🎮
 - **Background colors are customizable!**  
 - Access the Customizing Menu by holding **LB + RB** for **1 second**.
 ---
