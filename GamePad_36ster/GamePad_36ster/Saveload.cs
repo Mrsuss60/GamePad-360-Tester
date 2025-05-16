@@ -61,7 +61,7 @@ public class SaveLoad
         {
             return;
         }
-        using (StreamReader reader = new StreamReader(SaveFileName))
+        using (StreamReader reader = new StreamReader(filepath))
         {
             XmlSerializer serializer = new XmlSerializer(typeof(ColorData));
             ColorData colorData = (ColorData)serializer.Deserialize(reader);
