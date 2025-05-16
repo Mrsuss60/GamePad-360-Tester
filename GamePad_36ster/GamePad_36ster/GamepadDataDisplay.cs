@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -64,14 +64,24 @@ namespace GamepadTester
             int yValue = (int)(position.Y * 32768);
 
             string title = stickName + ":";
-            string textX = "X=" + xValue.ToString();
-            string textY = "Y=" + yValue.ToString();
+            string textX = "X=";
+            string textY = "Y=";
+            string valueX = xValue.ToString();
+            string valueY = yValue.ToString();
 
             spriteBatch.DrawString(font, title, screenPosition, Color.Black);
 
-            spriteBatch.DrawString(font, textX, new Vector2(screenPosition.X, screenPosition.Y + verticalOffset), Color.Black);
+            Vector2 textXPosition = new Vector2(screenPosition.X, screenPosition.Y + verticalOffset);
+            spriteBatch.DrawString(font, textX, textXPosition, Color.Black);
 
-            spriteBatch.DrawString(font, textY, new Vector2(screenPosition.X, screenPosition.Y + 2 * verticalOffset), Color.Black);
+            Vector2 valueXPosition = new Vector2(textXPosition.X + font.MeasureString(textX).X + 5, textXPosition.Y);
+            spriteBatch.DrawString(font, valueX, valueXPosition, Color.Black);
+
+            Vector2 textYPosition = new Vector2(screenPosition.X, screenPosition.Y + 2 * verticalOffset);
+            spriteBatch.DrawString(font, textY, textYPosition, Color.Black);
+
+            Vector2 valueYPosition = new Vector2(textYPosition.X + font.MeasureString(textY).X + 5, textYPosition.Y);
+            spriteBatch.DrawString(font, valueY, valueYPosition, Color.Black);
         }
     }
 }

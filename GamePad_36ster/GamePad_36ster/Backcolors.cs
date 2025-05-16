@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -47,9 +47,9 @@ public class Backcolors
         if (currentState.DPad.Left == ButtonState.Pressed && previousState.DPad.Left == ButtonState.Released)
             currentComponentIndex = (currentComponentIndex + 2) % 3;
         if (currentState.Buttons.A == ButtonState.Pressed && previousState.Buttons.A == ButtonState.Released)
-            currentColorIndex = (currentColorIndex + 1) % 3; 
+            currentColorIndex = (currentColorIndex + 1) % 3;
         if (currentState.Buttons.Y == ButtonState.Pressed && previousState.Buttons.Y == ButtonState.Released)
-            currentColorIndex = (currentColorIndex + 2) % 3; 
+            currentColorIndex = (currentColorIndex + 2) % 3;
         if (currentState.Buttons.B == ButtonState.Pressed && previousState.Buttons.B == ButtonState.Released)
             ToggleActive();
     }
@@ -109,7 +109,7 @@ public class Backcolors
                 string componentText = j == 0 ? string.Format(" Red:{0}", color.R) :
                                        (j == 1 ? string.Format(" Green:{0}", color.G) :
                                        string.Format(" Blue:{0}", color.B));
-                float additionalSpacing = j == 1 ? -10 : 0; 
+                float additionalSpacing = j == 1 ? -10 : 0;
                 Vector2 componentPosition = position + new Vector2(font.MeasureString(colorNames[i] + ":").X, 0) + new Vector2(j * 100 + additionalSpacing, 0);
 
                 Color componentColor = (i == currentColorIndex && j == currentComponentIndex) ? Color.Yellow : Color.Black;

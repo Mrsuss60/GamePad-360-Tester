@@ -7,7 +7,7 @@ using GamePad_36ster;
 
 public class SaveLoad
 {
-    private const string SaveFileName = "backcolors.xml";
+    private const string SaveFileName = "BackGroundColors.xml";
 
     [Serializable]
     public class ColorData
@@ -41,39 +41,42 @@ public class SaveLoad
             BottomB = bottom.B / 255f
         };
 
-        XmlSerializer serializer = new XmlSerializer(typeof(ColorData));
-        using (StreamWriter writer = new StreamWriter(SaveFileName))
+        string rootDir = "GAMEP360";
+        if (!Directory.Exists(rootDir))
+            Directory.CreateDirectory(rootDir);
+
+        string filePath = Path.Combine(rootDir, "BackGroundColors.xml");
+
+        using (StreamWriter writer = new StreamWriter(filePath))
         {
+            XmlSerializer serializer = new XmlSerializer(typeof(ColorData));
             serializer.Serialize(writer, colorData);
         }
     }
 
     public static void LoadColors(Backcolors backcolors)
     {
-        if (!File.Exists(SaveFileName))
+        string filepath = Path.Combine("GAMEP360", "BackGroundColors.xml");
+        if (!File.Exists(filepath))
         {
-            return; 
+            return;
         }
-
-        XmlSerializer serializer = new XmlSerializer(typeof(ColorData));
-        ColorData colorData;
-
         using (StreamReader reader = new StreamReader(SaveFileName))
         {
-            colorData = (ColorData)serializer.Deserialize(reader);
+            XmlSerializer serializer = new XmlSerializer(typeof(ColorData));
+            ColorData colorData = (ColorData)serializer.Deserialize(reader);
+            Color topLeft = new Color(colorData.TopLeftR, colorData.TopLeftG, colorData.TopLeftB);
+            Color topRight = new Color(colorData.TopRightR, colorData.TopRightG, colorData.TopRightB);
+            Color bottom = new Color(colorData.BottomR, colorData.BottomG, colorData.BottomB);
+
+            backcolors.SetColors(topLeft, topRight, bottom);
         }
-
-        Color topLeft = new Color(colorData.TopLeftR, colorData.TopLeftG, colorData.TopLeftB);
-        Color topRight = new Color(colorData.TopRightR, colorData.TopRightG, colorData.TopRightB);
-        Color bottom = new Color(colorData.BottomR, colorData.BottomG, colorData.BottomB);
-
-        backcolors.SetColors(topLeft, topRight, bottom);
     }
 }
 
 namespace GamePad_36ster
-    {
-     class SerializableAttribute : Attribute
+{
+    class SerializableAttribute : Attribute
     {
     }
 }

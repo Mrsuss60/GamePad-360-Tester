@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -29,11 +29,9 @@ namespace GamepadTester
         public Texture2D GuideButtonMediumTexture { get; private set; }
         public Texture2D GuideButtonDarkTexture { get; private set; }
         public Texture2D RStexture { get; private set; }
-        public Texture2D LStexture { get; private set; } 
+        public Texture2D LStexture { get; private set; }
         public SpriteFont Font { get; private set; }
-        public SpriteFont TitleFont { get; private set; }
-        public SpriteFont By { get; private set; }
-        public SpriteFont name { get; private set; }
+        public Texture2D splashscreen { get; private set; }
 
         public void LoadContent(ContentManager content)
         {
@@ -63,10 +61,8 @@ namespace GamepadTester
             GuideButtonBrightTexture = content.Load<Texture2D>("guide_button_bright");
             GuideButtonMediumTexture = content.Load<Texture2D>("guide_button_medium");
             GuideButtonDarkTexture = content.Load<Texture2D>("guide_button_dark");
-            Font = content.Load<SpriteFont>("Arial");
-            TitleFont = content.Load<SpriteFont>("TitleFont");
-            By = content.Load<SpriteFont>("by");
-            name = content.Load<SpriteFont>("name");
+            Font = content.Load<SpriteFont>("font");
+            splashscreen = content.Load<Texture2D>("splashscreen");
         }
 
         public Texture2D GetButtonTexture(Buttons button)

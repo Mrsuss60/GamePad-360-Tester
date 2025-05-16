@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using GamepadTester;
@@ -31,7 +31,7 @@ public class LTRT
             content.RightTriggerBarTexture.Height);
 
         LeftFillOffset = new Vector2(87, 30);
-        RightFillOffset = new Vector2(598, 30); 
+        RightFillOffset = new Vector2(598, 30);
 
         UpdateFillPositions();
     }

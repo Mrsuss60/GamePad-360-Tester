@@ -7,7 +7,7 @@ public class GlowingGuideButton
     private Texture2D mediumTexture;
     private Texture2D brightTexture;
     private float glowTimer;
-    private const float GlowDuration = 4f; 
+    private const float GlowDuration = 4f;
 
     public GlowingGuideButton(Texture2D dark, Texture2D medium, Texture2D bright)
     {
@@ -28,27 +28,27 @@ public class GlowingGuideButton
 
     public void Draw(SpriteBatch spriteBatch, Vector2 position)
     {
-        float glowPhase = (glowTimer / GlowDuration) * 4f; 
+        float glowPhase = (glowTimer / GlowDuration) * 4f;
 
         float opacityDark = 1f;
         float opacityMedium = 0f;
         float opacityBright = 0f;
 
-        if (glowPhase < 1f) 
+        if (glowPhase < 1f)
         {
             opacityMedium = MathHelper.SmoothStep(0f, 1f, glowPhase);
         }
-        else if (glowPhase < 2f) 
+        else if (glowPhase < 2f)
         {
             opacityMedium = 1f;
             opacityBright = MathHelper.SmoothStep(0f, 1f, glowPhase - 1f);
         }
-        else if (glowPhase < 3f) 
+        else if (glowPhase < 3f)
         {
             opacityMedium = 1f;
             opacityBright = MathHelper.SmoothStep(1f, 0f, glowPhase - 2f);
         }
-        else 
+        else
         {
             opacityMedium = MathHelper.SmoothStep(1f, 0f, glowPhase - 3f);
         }
