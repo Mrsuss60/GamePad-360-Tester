@@ -11,6 +11,6 @@
 ---
 ### [Version: `release_1.0`](https://github.com/Mrsuss60/GamePad-360-Tester/releases/tag/release-v1.0)
 
-![GamePad Tester Preview](https://github.com/user-attachments/assets/468d9796-9258-4df4-b363-02f5324120f9)
+![image](https://github.com/user-attachments/assets/6152ccd6-29f0-446a-a7d5-b5c8bb5d07a3)
 
 Note: This project had 755 downloads before old releases were removed. Only the latest version is currently available.
