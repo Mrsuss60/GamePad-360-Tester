@@ -5,9 +5,14 @@ using System;
 
 public class Backcolors
 {
-    private Color topLeft = new Color(52, 152, 219);
-    private Color topRight = new Color(41, 128, 185);
-    private Color bottom = new Color(236, 240, 241);
+    private readonly Color defaultTopLeft = new Color(151, 179, 219);
+    private readonly Color defaultTopRight = new Color(110, 128, 214);
+    private readonly Color defaultBottom = new Color(233, 244, 255);
+
+    private Color topLeft;
+    private Color topRight;
+    private Color bottom;
+
     private bool isActive = false;
     private int currentColorIndex = 0;
     private int currentComponentIndex = 0;
@@ -17,6 +22,7 @@ public class Backcolors
     public Backcolors(SpriteFont font)
     {
         this.font = font;
+        ResetColorsToDefault();
     }
 
     public void ToggleActive()
@@ -46,12 +52,19 @@ public class Backcolors
             currentComponentIndex = (currentComponentIndex + 1) % 3;
         if (currentState.DPad.Left == ButtonState.Pressed && previousState.DPad.Left == ButtonState.Released)
             currentComponentIndex = (currentComponentIndex + 2) % 3;
+
         if (currentState.Buttons.A == ButtonState.Pressed && previousState.Buttons.A == ButtonState.Released)
             currentColorIndex = (currentColorIndex + 1) % 3;
         if (currentState.Buttons.Y == ButtonState.Pressed && previousState.Buttons.Y == ButtonState.Released)
             currentColorIndex = (currentColorIndex + 2) % 3;
+
         if (currentState.Buttons.B == ButtonState.Pressed && previousState.Buttons.B == ButtonState.Released)
             ToggleActive();
+
+        if (currentState.Buttons.X == ButtonState.Pressed && previousState.Buttons.X == ButtonState.Released)
+        {
+            ResetColorsToDefault();
+        }
     }
 
     private void AdjustCurrentComponent(int direction, float deltaTime)
@@ -79,47 +92,80 @@ public class Backcolors
         else bottom = color;
     }
 
+
+    private void ResetColorsToDefault()
+    {
+        topLeft = defaultTopLeft;
+        topRight = defaultTopRight;
+        bottom = defaultBottom;
+    }
+
     public void Draw(SpriteBatch spriteBatch, int screenWidth, int screenHeight)
     {
         if (!isActive) return;
 
         string[] colorNames = { "Top Left", "Top Right", "Bottom" };
 
-        Vector2 centerScreen = new Vector2(screenWidth / 2f, screenHeight / 2f);
+        float column1_X = screenWidth / 2f - 200;
+        float column2_X = screenWidth / 2f - 103;
+        float column3_X = screenWidth / 2f - 20;
+        float column4_X = screenWidth / 2f + 85;
+        float indicator_X_offset = -30;
+
+        Vector2 centerScreenY = new Vector2(0, screenHeight / 2f);
         float lineHeight = font.LineSpacing * 1.5f;
+        float startY = centerScreenY.Y - lineHeight;
 
         for (int i = 0; i < 3; i++)
         {
             Color color = i == 0 ? topLeft : (i == 1 ? topRight : bottom);
-            string text = string.Format("{0}: Red:{1} Green:{2} Blue:{3}", colorNames[i], color.R, color.G, color.B);
-            Vector2 size = font.MeasureString(text);
-            Vector2 position = centerScreen + new Vector2(-size.X / 2, -lineHeight * 2 + i * lineHeight);
+            float currentLineY = startY + i * lineHeight;
             Color textColor = Color.Black;
 
             if (i == currentColorIndex)
             {
-                spriteBatch.DrawString(font, ">", position - new Vector2(20, 0), Color.Green);
-                textColor = Color.Green;
+                Vector2 indicatorPosition = new Vector2(column1_X + indicator_X_offset, currentLineY);
+                spriteBatch.DrawString(font, ">", indicatorPosition, Color.Yellow);
+                textColor = Color.Yellow;
             }
 
-            spriteBatch.DrawString(font, colorNames[i] + ":", position, textColor);
 
-            for (int j = 0; j < 3; j++)
+            Vector2 colorNamePosition = new Vector2(column1_X, currentLineY);
+            spriteBatch.DrawString(font, colorNames[i] + ":", colorNamePosition, textColor);
+
+
+            Color highlightColor = Color.Black;
+            if (i == currentColorIndex)
             {
-                string componentText = j == 0 ? string.Format(" Red:{0}", color.R) :
-                                       (j == 1 ? string.Format(" Green:{0}", color.G) :
-                                       string.Format(" Blue:{0}", color.B));
-                float additionalSpacing = j == 1 ? -10 : 0;
-                Vector2 componentPosition = position + new Vector2(font.MeasureString(colorNames[i] + ":").X, 0) + new Vector2(j * 100 + additionalSpacing, 0);
-
-                Color componentColor = (i == currentColorIndex && j == currentComponentIndex) ? Color.Yellow : Color.Black;
-                spriteBatch.DrawString(font, componentText, componentPosition, componentColor);
+                if (currentComponentIndex == 0) highlightColor = Color.Red;
+                else if (currentComponentIndex == 1) highlightColor = Color.Green;
+                else if (currentComponentIndex == 2) highlightColor = Color.Blue;
             }
+
+
+
+            string redText = string.Format("Red:{0}", color.R);
+            Vector2 redPosition = new Vector2(column2_X, currentLineY);
+            Color redColor = (i == currentColorIndex && currentComponentIndex == 0) ? highlightColor : Color.Black;
+            spriteBatch.DrawString(font, redText, redPosition, redColor);
+
+
+            string greenText = string.Format("Green:{0}", color.G);
+            Vector2 greenPosition = new Vector2(column3_X, currentLineY);
+            Color greenColor = (i == currentColorIndex && currentComponentIndex == 1) ? highlightColor : Color.Black;
+            spriteBatch.DrawString(font, greenText, greenPosition, greenColor);
+
+
+            string blueText = string.Format("Blue:{0}", color.B);
+            Vector2 bluePosition = new Vector2(column4_X, currentLineY);
+            Color blueColor = (i == currentColorIndex && currentComponentIndex == 2) ? highlightColor : Color.Black;
+            spriteBatch.DrawString(font, blueText, bluePosition, blueColor);
         }
 
-        string instructions = "D-Pad: change color values | A: Next | Y: Previous | B: Exit/Save";
+
+        string instructions = "D-Pad: change color/value | A: Next Color | Y: Previous Color | X: Reset Colors | B: Go Back/Save";
         Vector2 instructionsSize = font.MeasureString(instructions);
-        Vector2 instructionsPosition = new Vector2(screenWidth / 2 - instructionsSize.X / 2, screenHeight - 30);
+        Vector2 instructionsPosition = new Vector2(screenWidth / 2 - instructionsSize.X / 2, screenHeight - 55);
         spriteBatch.DrawString(font, instructions, instructionsPosition, Color.Black);
     }
 

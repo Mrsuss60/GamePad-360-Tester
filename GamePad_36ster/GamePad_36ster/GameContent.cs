@@ -25,13 +25,15 @@ namespace GamepadTester
         public Texture2D LeftTriggerFillTexture { get; private set; }
         public Texture2D RightTriggerBarTexture { get; private set; }
         public Texture2D RightTriggerFillTexture { get; private set; }
-        public Texture2D GuideButtonBrightTexture { get; private set; }
-        public Texture2D GuideButtonMediumTexture { get; private set; }
-        public Texture2D GuideButtonDarkTexture { get; private set; }
+        public Texture2D GuideB1Texture { get; private set; }
+        public Texture2D GuideB2Texture { get; private set; }
+        public Texture2D GuideB3Texture { get; private set; }
+        public Texture2D GuideB4Texture { get; private set; }
         public Texture2D RStexture { get; private set; }
         public Texture2D LStexture { get; private set; }
         public SpriteFont Font { get; private set; }
-        public Texture2D splashscreen { get; private set; }
+        public Texture2D Splashscreen { get; private set; }
+        public Texture2D Credits { get; private set; }
 
         public void LoadContent(ContentManager content)
         {
@@ -58,11 +60,13 @@ namespace GamepadTester
             RightTriggerBarTexture = content.Load<Texture2D>("RightT");
             RightTriggerFillTexture = content.Load<Texture2D>("RightTFill");
 
-            GuideButtonBrightTexture = content.Load<Texture2D>("guide_button_bright");
-            GuideButtonMediumTexture = content.Load<Texture2D>("guide_button_medium");
-            GuideButtonDarkTexture = content.Load<Texture2D>("guide_button_dark");
+            GuideB1Texture = content.Load<Texture2D>("guide_b1");
+            GuideB2Texture = content.Load<Texture2D>("guide_b2");
+            GuideB3Texture = content.Load<Texture2D>("guide_b3");
+            GuideB4Texture = content.Load<Texture2D>("guide_b4");
             Font = content.Load<SpriteFont>("font");
-            splashscreen = content.Load<Texture2D>("splashscreen");
+            Credits = content.Load<Texture2D>("credits");
+            Splashscreen = content.Load<Texture2D>("splashscreen");
         }
 
         public Texture2D GetButtonTexture(Buttons button)

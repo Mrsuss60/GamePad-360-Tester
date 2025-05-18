@@ -16,7 +16,7 @@ namespace GamepadTester
         private InputManager inputManager;
         private LTRT ltrt;
         private TimeSpan lbRbHoldTime = TimeSpan.Zero;
-        private const float MenuActivationTime = 1f;
+        private const float MenuActivationTime = 1.0f;
 
         private VertexPositionColor[] gradientVertices;
         private BasicEffect gradientEffect;
@@ -28,11 +28,14 @@ namespace GamepadTester
 
         private bool isSlidingOut = false;
         private float slideOffset = 0f;
-        private const float SlideSpeed = 1550f;
-        private float splashAnimationTime = 0f;
-        private const float SplashAnimationSpeed = 1.8f;
+        private const float SlideSpeed = 840f;
+        private const float SplashAnimationSpeed = 1.7f;
         private const float SplashHdistance = 35f;
-        private float pressAnimationDelay = 2.0f;
+        private float splashInputDelay = 1.2f;
+        private float splashAnimationTime = 0f;
+        private float splashElapsedTime = 0f;
+        private float pressAnimationDelay = 1.2f;
+
 
         public GamepadTesterGame()
         {
@@ -88,19 +91,20 @@ namespace GamepadTester
             {
                 if (!isSlidingOut)
                 {
+                    splashElapsedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
                     if (pressAnimationDelay > 0)
                     {
                         pressAnimationDelay -= (float)gameTime.ElapsedGameTime.TotalSeconds;
                     }
                     else
                     {
-
                         splashAnimationTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
                         slideOffset = -Math.Abs((float)Math.Sin(splashAnimationTime * SplashAnimationSpeed)) * SplashHdistance;
                     }
 
-                    if (currentState.Buttons.A == ButtonState.Pressed ||
+                    if (splashElapsedTime >= splashInputDelay &&
+                        (currentState.Buttons.A == ButtonState.Pressed ||
                         currentState.Buttons.B == ButtonState.Pressed ||
                         currentState.Buttons.X == ButtonState.Pressed ||
                         currentState.Buttons.Y == ButtonState.Pressed ||
@@ -119,16 +123,16 @@ namespace GamepadTester
                         Math.Abs(currentState.ThumbSticks.Right.X) > 0.1f ||
                         Math.Abs(currentState.ThumbSticks.Right.Y) > 0.1f ||
                         currentState.Triggers.Left > 0.1f ||
-                        currentState.Triggers.Right > 0.1f)
+                        currentState.Triggers.Right > 0.1f))
                     {
                         isSlidingOut = true;
                     }
                 }
                 else
                 {
-                    slideOffset -= SlideSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    slideOffset -= SlideSpeed * 2.0f * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                    if (slideOffset <= -gameContent.splashscreen.Width)
+                    if (slideOffset <= -gameContent.Splashscreen.Width)
                     {
                         isSplashActive = false;
                     }
@@ -141,7 +145,8 @@ namespace GamepadTester
                 // }
             }
 
-            if (currentState.Buttons.LeftShoulder == ButtonState.Pressed &&
+            if (!backcolors.IsActive &&
+                currentState.Buttons.LeftShoulder == ButtonState.Pressed &&
                 currentState.Buttons.RightShoulder == ButtonState.Pressed)
             {
                 lbRbHoldTime += gameTime.ElapsedGameTime;
@@ -149,17 +154,13 @@ namespace GamepadTester
                 {
                     backcolors.ToggleActive();
                     lbRbHoldTime = TimeSpan.Zero;
-
-                    if (!backcolors.IsActive)
-                    {
-                        SaveLoad.SaveColors(backcolors);
-                    }
                 }
             }
             else
             {
                 lbRbHoldTime = TimeSpan.Zero;
             }
+
 
             if (backcolors.IsActive)
             {
@@ -204,35 +205,55 @@ namespace GamepadTester
                 ltrt.Draw(spriteBatch, inputManager.CurrentState);
             }
 
-            string textLine1 = "By Mr.SuS.60";
-            string textLine2 = "github.com/Mrsuss60";
+            //string textLine1 = "By Mr.SuS.60";
+            //string textLine2 = "github.com/Mrsuss60";
 
-            Vector2 textSize1 = gameContent.Font.MeasureString(textLine1);
-            Vector2 textSize2 = gameContent.Font.MeasureString(textLine2);
+            //Vector2 textSize1 = gameContent.Font.MeasureString(textLine1);
+            //Vector2 textSize2 = gameContent.Font.MeasureString(textLine2);
 
-            float paddingX = 20f; 
-            float paddingY = 8f; 
-            float lineSpacing = gameContent.Font.LineSpacing + 4f; 
+            //float paddingX = 20f;
+            //float paddingY = 8f;
+            //float lineSpacing = gameContent.Font.LineSpacing + 4f;
 
-           
-            Vector2 textPosition1 = new Vector2(paddingX, paddingY);
-            Vector2 textPosition2 = new Vector2(paddingX, paddingY + lineSpacing);
 
-            spriteBatch.DrawString(gameContent.Font, textLine1, textPosition1, Color.Black);
-            spriteBatch.DrawString(gameContent.Font, textLine2, textPosition2, Color.Black);
+            //Vector2 textPosition1 = new Vector2(paddingX, paddingY);
+            //Vector2 textPosition2 = new Vector2(paddingX, paddingY + lineSpacing);
+
+            //spriteBatch.DrawString(gameContent.Font, textLine1, textPosition1, Color.Black);
+            //spriteBatch.DrawString(gameContent.Font, textLine2, textPosition2, Color.Black);
+
+            if (!backcolors.IsActive)
+            {
+
+                string message = "Hold LB+RB for a second to access background colors menu";
+
+                Vector2 textSize = gameContent.Font.MeasureString(message);
+
+                float LbRbpaddingX = 20f;
+                float LbRbpaddingY = 15f;
+
+                Vector2 textPosition = new Vector2(GraphicsDevice.Viewport.Width - textSize.X - LbRbpaddingX, LbRbpaddingY);
+
+                spriteBatch.DrawString(gameContent.Font, message, textPosition, Color.Black);
+
+                float PositionX = -10f;
+                float PositionY = -5f;
+                spriteBatch.Draw(gameContent.Credits, new Vector2(PositionX, PositionY), Color.White);
+
+            }
 
 
 
 
             if (isSplashActive)
             {
-                float baseX = (graphics.PreferredBackBufferWidth - gameContent.splashscreen.Width) / 2;
-                float baseY = (graphics.PreferredBackBufferHeight - gameContent.splashscreen.Height) / 2;
+                float baseX = (graphics.PreferredBackBufferWidth - gameContent.Splashscreen.Width) / 2;
+                float baseY = (graphics.PreferredBackBufferHeight - gameContent.Splashscreen.Height) / 2;
 
                 float xPosition = baseX + slideOffset;
 
                 Vector2 logoPosition = new Vector2(xPosition, baseY);
-                spriteBatch.Draw(gameContent.splashscreen, logoPosition, Color.White);
+                spriteBatch.Draw(gameContent.Splashscreen, logoPosition, Color.White);
             }
 
             spriteBatch.End();

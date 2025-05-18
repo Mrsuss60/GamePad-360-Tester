@@ -57,11 +57,7 @@ namespace GamepadTester
                 { Buttons.RightShoulder, gameContent.RbTexture }
             };
 
-            glowingGuideButton = new GlowingGuideButton(
-                gameContent.GuideButtonDarkTexture,
-                gameContent.GuideButtonMediumTexture,
-                gameContent.GuideButtonBrightTexture
-            );
+            glowingGuideButton = new GlowingGuideButton(gameContent);
 
             ltrt = new LTRT(content, gamepadPosition);
         }

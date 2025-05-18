@@ -137,23 +137,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="guide_button_bright.png">
-      <Name>guide_button_bright</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="guide_button_dark.png">
-      <Name>guide_button_dark</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="guide_button_medium.png">
-      <Name>guide_button_medium</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="LeftT.png">
       <Name>LeftT</Name>
       <Importer>TextureImporter</Importer>
@@ -212,6 +195,35 @@
   <ItemGroup>
     <Compile Include="splashscreen.png">
       <Name>splashscreen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="guide_b1.png">
+      <Name>guide_b1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="guide_b2.png">
+      <Name>guide_b2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="guide_b3.png">
+      <Name>guide_b3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="guide_b4.png">
+      <Name>guide_b4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="credits.png">
+      <Name>credits</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

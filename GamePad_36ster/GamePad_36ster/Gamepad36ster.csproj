@@ -16,6 +16,8 @@
     <XnaProfile>HiDef</XnaProfile>
     <XdkRuntimeFlavor Condition=" '$(XdkRuntimeFlavor)' == '' ">Release</XdkRuntimeFlavor>
     <XnaCrossPlatformGroupID>fae473e3-cb30-4ea0-8b4d-f94847e8071e</XnaCrossPlatformGroupID>
+    <Thumbnail>
+    </Thumbnail>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|XDK' ">
     <DebugSymbols>true</DebugSymbols>
@@ -133,14 +135,18 @@
     <Compile Include="Program.cs" />
     <Compile Include="GamepadTesterGame.cs" />
     <Compile Include="VibrationTester.cs" />
-	<Compile Include="Saveload.cs" />
-	<Compile Include="GlowingGuideButton.cs" />
+    <Compile Include="Saveload.cs" />
+    <Compile Include="GlowingGuideButton.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ContentXlast Include="Content.xlast" />
+    <ContentXlast Include="Content.xlast">
+      <SubType>Designer</SubType>
+    </ContentXlast>
   </ItemGroup>
   <ItemGroup>
-    <TitleGameConfig Include="LiveFiles\Title.gameconfig" />
+    <TitleGameConfig Include="LiveFiles\Title.gameconfig">
+      <SubType>Designer</SubType>
+    </TitleGameConfig>
   </ItemGroup>
   <ItemGroup>
     <XdkLiveFile Include="LiveFiles\Achievement01.png" />
