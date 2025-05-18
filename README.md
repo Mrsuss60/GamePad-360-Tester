@@ -7,7 +7,7 @@
 
 ---
 - **Background colors are customizable!**  
-- Access the Customizing Menu by holding **LB + RB** for **1 second**.
+- Access the background colors Menu by holding **LB + RB** for **1 second**.
 ---
 ### [Version: `release_2.0`](https://github.com/Mrsuss60/GamePad-360-Tester/releases/tag/release-v2.0)
 
