@@ -6,8 +6,10 @@
 **Latest system and dashboard updates are required❗**
 
 ---
-- **Background colors are customizable!**  
-- Access the background colors Menu by holding **LB + RB** for **1 second**.
+**Features:** 
+- A complete UI to visualize all the inputs, as well as input data 
+- The controller's vibration motors activate with Triggers, and the vibration strength scales with RT/LT pressure 
+- Background colors are customizable! (hold **LB + RB** for **1 second** to open the menu)
 ---
 ### [Version: `release_2.0`](https://github.com/Mrsuss60/GamePad-360-Tester/releases/tag/release-v2.0)
 
