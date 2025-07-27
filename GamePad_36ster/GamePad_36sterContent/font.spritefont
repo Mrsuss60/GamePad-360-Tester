@@ -11,23 +11,23 @@ with.
     <!--
     Modify this string to change the font that will be imported.
     -->
-    <FontName>Century Gothic</FontName>
+    <FontName>Microsoft Sans Serif</FontName>
 
     <!--
     Size is a float value, measured in points. Modify this value to change
     the size of the font.
     -->
-    <Size>14</Size>
+    <Size>21</Size>
 
     <!--
     Spacing is a float value, measured in pixels. Modify this value to change
     the amount of spacing in between characters.
     -->
-    <Spacing>0</Spacing>
+    <Spacing>0.2</Spacing>
 
     <!--
     UseKerning controls the layout of the font. If this value is true, kerning information
-    will be used when placing characters.
+    will be used when placing characters.d
     -->
     <UseKerning>true</UseKerning>
 
