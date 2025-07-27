@@ -7,9 +7,8 @@
 
 ---
 **Features:** 
-- A complete UI to visualize all the inputs, as well as input data 
-- The controller's vibration motors activate with Triggers, and the vibration strength scales with RT/LT pressure 
-- Background colors are customizable! (hold **LB + RB** for **1 second** to open the menu)
+- A complete UI to visualize all the inputs, as well as input data.
+- The controller's vibration motors activate with Triggers, and the vibration strength scales with RT/LT pressure.
 ---
 ### [Version: `release_2.0`](https://github.com/Mrsuss60/GamePad-360-Tester/releases/tag/release-v3.0)
 
