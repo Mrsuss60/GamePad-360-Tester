@@ -33,8 +33,8 @@ namespace GamepadTester
         public Texture2D LStexture { get; private set; }
         public SpriteFont Font { get; private set; }
         public Texture2D Splashscreen { get; private set; }
-        public Texture2D Credits { get; private set; }
 
+        public Texture2D Credits { get; private set; }
         public void LoadContent(ContentManager content)
         {
             GamepadFrameTexture = content.Load<Texture2D>("gamepadframe");
@@ -48,16 +48,14 @@ namespace GamepadTester
             DpadDownTexture = content.Load<Texture2D>("dpad_down");
             DpadLeftTexture = content.Load<Texture2D>("dpad_left");
             DpadRightTexture = content.Load<Texture2D>("dpad_right");
-            LbTexture = content.Load<Texture2D>("lb");
-            RbTexture = content.Load<Texture2D>("rb");
-            LeftStickTexture = content.Load<Texture2D>("LeftStickTexture");
-            RightStickTexture = content.Load<Texture2D>("RightStickTexture");
-            RStexture = content.Load<Texture2D>("RStexture");
-            LStexture = content.Load<Texture2D>("LStexture");
+            LbTexture = content.Load<Texture2D>("LB");
+            RbTexture = content.Load<Texture2D>("RB");
+            LeftStickTexture = content.Load<Texture2D>("LeftStick");
+            RightStickTexture = content.Load<Texture2D>("RightStick");
+            RStexture = content.Load<Texture2D>("RS");
+            LStexture = content.Load<Texture2D>("LS");
 
-            LeftTriggerBarTexture = content.Load<Texture2D>("LeftT");
             LeftTriggerFillTexture = content.Load<Texture2D>("LeftTFill");
-            RightTriggerBarTexture = content.Load<Texture2D>("RightT");
             RightTriggerFillTexture = content.Load<Texture2D>("RightTFill");
 
             GuideB1Texture = content.Load<Texture2D>("guide_b1");
@@ -66,6 +64,7 @@ namespace GamepadTester
             GuideB4Texture = content.Load<Texture2D>("guide_b4");
             Font = content.Load<SpriteFont>("font");
             Credits = content.Load<Texture2D>("credits");
+
             Splashscreen = content.Load<Texture2D>("splashscreen");
         }
 

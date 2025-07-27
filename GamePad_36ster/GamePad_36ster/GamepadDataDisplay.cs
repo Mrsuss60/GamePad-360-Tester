@@ -21,40 +21,53 @@ namespace GamepadTester
 
         public void Draw(SpriteBatch spriteBatch, int screenWidth, int screenHeight)
         {
-            DrawButtonState(spriteBatch, "A", currentState.Buttons.A, new Vector2(screenWidth - 150, 100));
-            DrawButtonState(spriteBatch, "B", currentState.Buttons.B, new Vector2(screenWidth - 150, 130));
-            DrawButtonState(spriteBatch, "X", currentState.Buttons.X, new Vector2(screenWidth - 150, 160));
-            DrawButtonState(spriteBatch, "Y", currentState.Buttons.Y, new Vector2(screenWidth - 150, 190));
-            DrawButtonState(spriteBatch, "RB", currentState.Buttons.RightShoulder, new Vector2(screenWidth - 150, 220));
-            DrawButtonState(spriteBatch, "START", currentState.Buttons.Start, new Vector2(screenWidth - 150, 250));
-            DrawButtonState(spriteBatch, "RS", currentState.Buttons.RightStick, new Vector2(screenWidth - 150, 280));
+            float leftX = screenWidth * 0.05f;
+            float rightX = screenWidth * 0.87f;
+            float yStart = screenHeight * 0.25f;
+            float yStep = 38.3f;
 
-            DrawButtonState(spriteBatch, "D_UP", currentState.DPad.Up, new Vector2(50, 100));
-            DrawButtonState(spriteBatch, "D_DOWN", currentState.DPad.Down, new Vector2(50, 130));
-            DrawButtonState(spriteBatch, "D_LEFT", currentState.DPad.Left, new Vector2(50, 160));
-            DrawButtonState(spriteBatch, "D_RIGHT", currentState.DPad.Right, new Vector2(50, 190));
-            DrawButtonState(spriteBatch, "LB", currentState.Buttons.LeftShoulder, new Vector2(50, 220));
-            DrawButtonState(spriteBatch, "BACK", currentState.Buttons.Back, new Vector2(50, 250));
-            DrawButtonState(spriteBatch, "LS", currentState.Buttons.LeftStick, new Vector2(50, 280));
 
-            DrawTriggerState(spriteBatch, "RT", currentState.Triggers.Right, new Vector2(screenWidth - 150, 310));
-            DrawTriggerState(spriteBatch, "LT", currentState.Triggers.Left, new Vector2(50, 310));
+            DrawButtonState(spriteBatch, "A", currentState.Buttons.A, new Vector2(rightX, yStart + yStep * 0));
+            DrawButtonState(spriteBatch, "B", currentState.Buttons.B, new Vector2(rightX, yStart + yStep * 1));
+            DrawButtonState(spriteBatch, "X", currentState.Buttons.X, new Vector2(rightX, yStart + yStep * 2));
+            DrawButtonState(spriteBatch, "Y", currentState.Buttons.Y, new Vector2(rightX, yStart + yStep * 3));
+            DrawButtonState(spriteBatch, "RB", currentState.Buttons.RightShoulder, new Vector2(rightX, yStart + yStep * 4));
+            DrawButtonState(spriteBatch, "START", currentState.Buttons.Start, new Vector2(rightX, yStart + yStep * 5));
+            DrawButtonState(spriteBatch, "RS", currentState.Buttons.RightStick, new Vector2(rightX, yStart + yStep * 6));
 
-            DrawStickPosition(spriteBatch, "Left Stick", currentState.ThumbSticks.Left, new Vector2(50, screenHeight - 140), 20);
-            DrawStickPosition(spriteBatch, "Right Stick", currentState.ThumbSticks.Right, new Vector2(1280 - 150, screenHeight - 140), 20);
+
+            DrawButtonState(spriteBatch, "D-UP", currentState.DPad.Up, new Vector2(leftX, yStart + yStep * 0));
+            DrawButtonState(spriteBatch, "D-DOWN", currentState.DPad.Down, new Vector2(leftX, yStart + yStep * 1));
+            DrawButtonState(spriteBatch, "D-LEFT", currentState.DPad.Left, new Vector2(leftX, yStart + yStep * 2));
+            DrawButtonState(spriteBatch, "D-RIGHT", currentState.DPad.Right, new Vector2(leftX, yStart + yStep * 3));
+            DrawButtonState(spriteBatch, "LB", currentState.Buttons.LeftShoulder, new Vector2(leftX, yStart + yStep * 4));
+            DrawButtonState(spriteBatch, "BACK", currentState.Buttons.Back, new Vector2(leftX, yStart + yStep * 5));
+            DrawButtonState(spriteBatch, "LS", currentState.Buttons.LeftStick, new Vector2(leftX, yStart + yStep * 6));
+
+
+            DrawTriggerState(spriteBatch, "RT", currentState.Triggers.Right, new Vector2(rightX, yStart + yStep * 7));
+            DrawTriggerState(spriteBatch, "LT", currentState.Triggers.Left, new Vector2(leftX, yStart + yStep * 7));
+
+
+            float stickYOffset = 28f;
+            float stickY = screenHeight * 0.85f;
+            DrawStickPosition(spriteBatch, "Left Stick", currentState.ThumbSticks.Left, new Vector2(leftX, stickY), stickYOffset);
+            DrawStickPosition(spriteBatch, "Right Stick", currentState.ThumbSticks.Right, new Vector2(rightX, stickY), stickYOffset);
+
+            DrawVibrationIndicators(spriteBatch, screenWidth, screenHeight);
         }
 
         private void DrawButtonState(SpriteBatch spriteBatch, string buttonName, ButtonState state, Vector2 position)
         {
             float value = state == ButtonState.Pressed ? 1.0f : 0.0f;
-            string text = buttonName + ": " + value.ToString("F1");
+            string text = string.Format("{0}: {1:F1}", buttonName, value);
             spriteBatch.DrawString(font, text, position, Color.Black);
         }
 
         private void DrawTriggerState(SpriteBatch spriteBatch, string triggerName, float value, Vector2 position)
         {
             int scaledValue = (int)(value * 255);
-            string text = triggerName + ": " + scaledValue.ToString();
+            string text = string.Format("{0}: {1}", triggerName, scaledValue);
             spriteBatch.DrawString(font, text, position, Color.Black);
         }
 
@@ -63,25 +76,48 @@ namespace GamepadTester
             int xValue = (int)(position.X * 32768);
             int yValue = (int)(position.Y * 32768);
 
-            string title = stickName + ":";
-            string textX = "X=";
-            string textY = "Y=";
-            string valueX = xValue.ToString();
-            string valueY = yValue.ToString();
+            spriteBatch.DrawString(font, stickName + ":", screenPosition, Color.Black);
 
-            spriteBatch.DrawString(font, title, screenPosition, Color.Black);
+            Vector2 textXPos = new Vector2(screenPosition.X, screenPosition.Y + verticalOffset);
+            spriteBatch.DrawString(font, "X=", textXPos, Color.Black);
 
-            Vector2 textXPosition = new Vector2(screenPosition.X, screenPosition.Y + verticalOffset);
-            spriteBatch.DrawString(font, textX, textXPosition, Color.Black);
+            Vector2 valXPos = new Vector2(textXPos.X + font.MeasureString("X=").X + 5, textXPos.Y);
+            spriteBatch.DrawString(font, xValue.ToString(), valXPos, Color.Black);
 
-            Vector2 valueXPosition = new Vector2(textXPosition.X + font.MeasureString(textX).X + 5, textXPosition.Y);
-            spriteBatch.DrawString(font, valueX, valueXPosition, Color.Black);
+            Vector2 textYPos = new Vector2(screenPosition.X, screenPosition.Y + verticalOffset * 2);
+            spriteBatch.DrawString(font, "Y=", textYPos, Color.Black);
 
-            Vector2 textYPosition = new Vector2(screenPosition.X, screenPosition.Y + 2 * verticalOffset);
-            spriteBatch.DrawString(font, textY, textYPosition, Color.Black);
+            Vector2 valYPos = new Vector2(textYPos.X + font.MeasureString("Y=").X + 5, textYPos.Y);
+            spriteBatch.DrawString(font, yValue.ToString(), valYPos, Color.Black);
+        }
 
-            Vector2 valueYPosition = new Vector2(textYPosition.X + font.MeasureString(textY).X + 5, textYPosition.Y);
-            spriteBatch.DrawString(font, valueY, valueYPosition, Color.Black);
+        private void DrawVibrationIndicators(SpriteBatch spriteBatch, int screenWidth, int screenHeight)
+        {
+            int OffsetFromCenter = 650;
+            int OffsetY = 335;
+            int centerX = screenWidth / 2;
+
+            Vector2 LeftMotorText = new Vector2(centerX - OffsetFromCenter, screenHeight - OffsetY);
+            Vector2 RightMotorText = new Vector2(centerX + OffsetFromCenter, screenHeight - OffsetY);
+
+            float leftVibration = currentState.Triggers.Left;
+            float rightVibration = currentState.Triggers.Right;
+
+            if (leftVibration > 0.1f)
+            {
+                DrawVibrationText(spriteBatch, "Left Motor", LeftMotorText, Color.Black);
+            }
+
+            if (rightVibration > 0.1f)
+            {
+                DrawVibrationText(spriteBatch, "Right Motor", RightMotorText, Color.Black);
+            }
+        }
+
+        private void DrawVibrationText(SpriteBatch spriteBatch, string text, Vector2 position, Color color)
+        {
+            Vector2 textSize = font.MeasureString(text);
+            spriteBatch.DrawString(font, text, position - textSize / 2, color);
         }
     }
 }

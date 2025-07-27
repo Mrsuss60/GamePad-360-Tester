@@ -22,6 +22,18 @@ namespace GamepadTester
             glowTimer = 0f;
         }
 
+        public GlowingGuideButton(Texture2D b1, Texture2D b2, Texture2D b3)
+            : this(b1, b2, b3, 0f) { }
+
+        public GlowingGuideButton(Texture2D b1, Texture2D b2, Texture2D b3, float initialGlowTime)
+        {
+            TextureB1 = b1;
+            TextureB2 = b2;
+            TextureB3 = b3;
+            TextureB4 = b1;
+            glowTimer = initialGlowTime;
+        }
+
         public void Update(GameTime gameTime)
         {
             glowTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -33,7 +45,7 @@ namespace GamepadTester
 
         public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-
+            
             float glowPhase = (glowTimer / GlowDuration) * 6f;
 
             float opacity1 = 0f;
@@ -72,10 +84,10 @@ namespace GamepadTester
                 opacity1 = MathHelper.Lerp(0f, 1f, glowPhase - 5f);
             }
 
-            spriteBatch.Draw(TextureB1, position, Color.White * opacity1);
-            spriteBatch.Draw(TextureB2, position, Color.White * opacity2);
-            spriteBatch.Draw(TextureB3, position, Color.White * opacity3);
-            spriteBatch.Draw(TextureB4, position, Color.White * opacity4);
+            spriteBatch.Draw(TextureB1, Vector2.Zero, Color.White * opacity1);
+            spriteBatch.Draw(TextureB2, Vector2.Zero, Color.White * opacity2);
+            spriteBatch.Draw(TextureB3, Vector2.Zero, Color.White * opacity3);
+            spriteBatch.Draw(TextureB4, Vector2.Zero, Color.White * opacity4);
         }
     }
 }

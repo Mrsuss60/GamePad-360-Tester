@@ -16,7 +16,6 @@ namespace GamepadTester
 
         public void Update(GameTime gameTime)
         {
-            // Update the previous and current state
             PreviousState = CurrentState;
             CurrentState = GamePad.GetState(PlayerIndex.One);
         }

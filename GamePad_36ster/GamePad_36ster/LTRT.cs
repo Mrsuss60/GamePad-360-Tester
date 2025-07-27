@@ -6,32 +6,19 @@ using GamepadTester;
 public class LTRT
 {
     private GameContent gameContent;
-    private Rectangle leftTriggerBarRect;
-    private Rectangle rightTriggerBarRect;
     private Rectangle leftTriggerFillRect;
     private Rectangle rightTriggerFillRect;
+    private int PositionX = 0;
+    private int PositionY = 138;
 
-    public Vector2 LeftFillOffset { get; set; }
-    public Vector2 RightFillOffset { get; set; }
 
     public LTRT(GameContent content, Vector2 gamepadPosition)
     {
         gameContent = content;
 
-        leftTriggerBarRect = new Rectangle(
-            (int)gamepadPosition.X,
-            (int)gamepadPosition.Y,
-            content.LeftTriggerBarTexture.Width,
-            content.LeftTriggerBarTexture.Height);
+        leftTriggerFillRect = new Rectangle(PositionX, PositionY, content.LeftTriggerFillTexture.Width, content.LeftTriggerFillTexture.Height);
 
-        rightTriggerBarRect = new Rectangle(
-            (int)gamepadPosition.X,
-            (int)gamepadPosition.Y,
-            content.RightTriggerBarTexture.Width,
-            content.RightTriggerBarTexture.Height);
-
-        LeftFillOffset = new Vector2(87, 30);
-        RightFillOffset = new Vector2(598, 30);
+        rightTriggerFillRect = new Rectangle(PositionX, PositionY, content.RightTriggerFillTexture.Width, content.RightTriggerFillTexture.Height);
 
         UpdateFillPositions();
     }
@@ -39,15 +26,15 @@ public class LTRT
     public void UpdateFillPositions()
     {
         leftTriggerFillRect = new Rectangle(
-            leftTriggerBarRect.X + (int)LeftFillOffset.X,
-            leftTriggerBarRect.Y + (int)LeftFillOffset.Y,
+            (int)PositionX,
+            (int)PositionY,
             gameContent.LeftTriggerFillTexture.Width,
             gameContent.LeftTriggerFillTexture.Height
         );
 
         rightTriggerFillRect = new Rectangle(
-            leftTriggerBarRect.X + (int)RightFillOffset.X,
-            leftTriggerBarRect.Y + (int)RightFillOffset.Y,
+            (int)PositionX,
+            (int)PositionY,
             gameContent.RightTriggerFillTexture.Width,
             gameContent.RightTriggerFillTexture.Height
         );
@@ -55,9 +42,6 @@ public class LTRT
 
     public void Draw(SpriteBatch spriteBatch, GamePadState currentState)
     {
-        spriteBatch.Draw(gameContent.LeftTriggerBarTexture, leftTriggerBarRect, Color.White);
-        spriteBatch.Draw(gameContent.RightTriggerBarTexture, rightTriggerBarRect, Color.White);
-
         DrawTriggerFill(spriteBatch, leftTriggerFillRect, currentState.Triggers.Left, gameContent.LeftTriggerFillTexture);
         DrawTriggerFill(spriteBatch, rightTriggerFillRect, currentState.Triggers.Right, gameContent.RightTriggerFillTexture);
     }
