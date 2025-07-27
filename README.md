@@ -1,4 +1,4 @@
-# GamePad Tester for Xbox 360  [![Github downloads](https://img.shields.io/github/downloads/Mrsuss60/GamePad-360-Tester/total.svg?style=flat-square&color=blue)](https://github.com/Mrsuss60/GamePad-360-Tester/releases) ![Version](https://img.shields.io/badge/version-v2.0-green)
+# GamePad Tester for Xbox 360  [![Github downloads](https://img.shields.io/github/downloads/Mrsuss60/GamePad-360-Tester/total.svg?style=flat-square&color=blue)](https://github.com/Mrsuss60/GamePad-360-Tester/releases) ![Version](https://img.shields.io/badge/version-v3.0-green)
 
 
 **Using XNA Framework 4.0**
@@ -11,7 +11,7 @@
 - The controller's vibration motors activate with Triggers, and the vibration strength scales with RT/LT pressure 
 - Background colors are customizable! (hold **LB + RB** for **1 second** to open the menu)
 ---
-### [Version: `release_2.0`](https://github.com/Mrsuss60/GamePad-360-Tester/releases/tag/release-v2.0)
+### [Version: `release_2.0`](https://github.com/Mrsuss60/GamePad-360-Tester/releases/tag/release-v3.0)
 
 
 <img width="1920" height="1080" alt="download" src="https://github.com/user-attachments/assets/76119dd8-5d83-4fd7-9daf-a7b8e6c427a8" />
