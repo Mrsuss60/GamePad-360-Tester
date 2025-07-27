@@ -125,7 +125,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backcolors.cs" />
     <Compile Include="GameContent.cs" />
     <Compile Include="GamepadDataDisplay.cs" />
     <Compile Include="GamepadRenderer.cs" />
@@ -135,7 +134,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="GamepadTesterGame.cs" />
     <Compile Include="VibrationTester.cs" />
-    <Compile Include="Saveload.cs" />
     <Compile Include="GlowingGuideButton.cs" />
   </ItemGroup>
   <ItemGroup>
