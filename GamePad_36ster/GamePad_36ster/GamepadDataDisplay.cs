@@ -59,8 +59,8 @@ namespace GamepadTester
 
         private void DrawButtonState(SpriteBatch spriteBatch, string buttonName, ButtonState state, Vector2 position)
         {
-            float value = state == ButtonState.Pressed ? 1.0f : 0.0f;
-            string text = string.Format("{0}: {1:F1}", buttonName, value);
+            int value = state == ButtonState.Pressed ? 1 : 0;
+            string text = string.Format("{0}: {1}", buttonName, value);
             spriteBatch.DrawString(font, text, position, Color.Black);
         }
 
