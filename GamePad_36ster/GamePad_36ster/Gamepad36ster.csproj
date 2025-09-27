@@ -181,6 +181,17 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\XDK\Microsoft.Xna.GameStudio.Xdk.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>del "$(TargetDir)Content.xlast"
+del "$(TargetDir)Title.gameconfig"
+del "$(TargetDir)ArcadeInfo.xml"
+del "$(TargetDir)*.xdb"
+del "$(TargetDir)Achievement*.png"
+del "$(TargetDir)OfferBanner.png"
+del "$(TargetDir)GameIcon.png"
+del "$(TargetDir)DashBoardIcon.png"
+del "$(TargetDir)TitleImage.png"</PostBuildEvent>
+  </PropertyGroup>
   <!--
       To modify your build process, add your task inside one of the targets below and uncomment it. 
       Other similar extension points exist, see Microsoft.Common.targets.
