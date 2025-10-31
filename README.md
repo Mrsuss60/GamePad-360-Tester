@@ -1,5 +1,6 @@
 # GamePad Tester for Xbox 360  [![Github downloads](https://img.shields.io/github/downloads/Mrsuss60/GamePad-360-Tester/total.svg?style=flat-square&color=blue)](https://github.com/Mrsuss60/GamePad-360-Tester/releases) ![Version](https://img.shields.io/badge/version-v3.0.1-green)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L3L61NOIEY)
 
 **Using XNA Framework 4.0**
 
