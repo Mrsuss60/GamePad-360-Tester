@@ -1,7 +1,5 @@
 # GamePad Tester for Xbox 360  [![Github downloads](https://img.shields.io/github/downloads/Mrsuss60/GamePad-360-Tester/total.svg?style=flat-square&color=blue)](https://github.com/Mrsuss60/GamePad-360-Tester/releases) ![Version](https://img.shields.io/badge/version-v3.0.1-green)
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L3L61NOIEY)
-
 **Using XNA Framework 4.0**
 
 **Latest system and dashboard updates are required❗**
@@ -10,6 +8,11 @@
 **Features:** 
 - A complete UI to visualize all the inputs, as well as input data.
 - The controller's vibration motors activate with Triggers, and the vibration strength scales with RT/LT pressure.
+---
+**If you find this project useful, please consider [supporting me on Ko-Fi](https://ko-fi.com/L3L61NOIEY)** 
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/L3L61NOIEY)
+
 ---
 ### [Version: `release_3.0.1`](https://github.com/Mrsuss60/GamePad-360-Tester/releases/tag/release-v3.0.1)
 
